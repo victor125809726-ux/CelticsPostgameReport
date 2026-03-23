@@ -1,4 +1,4 @@
-# Celtics Report
+# Celtics Postgame Report
 
 Boston Celtics 赛后诊断系统。
 
@@ -12,10 +12,10 @@ Boston Celtics 赛后诊断系统。
 ## 目录结构
 
 ```text
-celtics_report/
-├── celtics daily report
+CelticsPostgameReport/
+├── run.py
 ├── README.md
-└── celtics_report_project/
+└── celtics_postgame_report/
     ├── __init__.py
     ├── config.py
     ├── fetchers.py
@@ -33,31 +33,31 @@ celtics_report/
 直接运行入口脚本：
 
 ```bash
-python3 "/Users/shiyan/celtics_report/celtics daily report"
+python3 "/Users/shiyan/CelticsPostgameReport/run.py"
 ```
 
 回跑上一场已结束的 Celtics 比赛：
 
 ```bash
-python3 "/Users/shiyan/celtics_report/celtics daily report" --last-completed-game
+python3 "/Users/shiyan/CelticsPostgameReport/run.py" --last-completed-game
 ```
 
 强制重生成上一场比赛报告：
 
 ```bash
-python3 "/Users/shiyan/celtics_report/celtics daily report" --last-completed-game --force-regenerate
+python3 "/Users/shiyan/CelticsPostgameReport/run.py" --last-completed-game --force-regenerate
 ```
 
 检查是否有漏掉的历史比赛：
 
 ```bash
-python3 "/Users/shiyan/celtics_report/celtics daily report" --backfill-missing --dry-run
+python3 "/Users/shiyan/CelticsPostgameReport/run.py" --backfill-missing --dry-run
 ```
 
 补跑缺失比赛：
 
 ```bash
-python3 "/Users/shiyan/celtics_report/celtics daily report" --backfill-missing
+python3 "/Users/shiyan/CelticsPostgameReport/run.py" --backfill-missing
 ```
 
 ## 输出位置
@@ -89,23 +89,23 @@ Obsidian Markdown 输出目录：
 查看状态：
 
 ```bash
-python3 "/Users/shiyan/celtics_report/celtics daily report" --launchd-status
+python3 "/Users/shiyan/CelticsPostgameReport/run.py" --launchd-status
 ```
 
 安装或刷新定时任务：
 
 ```bash
-python3 "/Users/shiyan/celtics_report/celtics daily report" --install-launchd --schedule-hour 15 --schedule-minute 0
+python3 "/Users/shiyan/CelticsPostgameReport/run.py" --install-launchd --schedule-hour 15 --schedule-minute 0
 ```
 
 卸载定时任务：
 
 ```bash
-python3 "/Users/shiyan/celtics_report/celtics daily report" --uninstall-launchd
+python3 "/Users/shiyan/CelticsPostgameReport/run.py" --uninstall-launchd
 ```
 
 ## 说明
 
 - 项目保留了补跑机制，会检查是否有已结束但未生成报告的比赛
-- Markdown 报告会包含比赛主线、核心指标、原因、风险点、球员点评、趋势分析等内容
+- Markdown 报告会包含比赛主线、核心指标、原因、风险点、趋势分析等内容
 - 历史索引和 manifest 会写入数据目录，方便后续追踪

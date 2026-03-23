@@ -92,15 +92,6 @@ def build_celtics_markdown(analysis: dict[str, Any]) -> str:
         lines.append(f"- 趋势结论: {analysis['trend_takeaway']}")
         lines.append("")
 
-    lines.append("## 球员点评")
-    lines.append("")
-    takeaways = analysis.get("player_takeaways", {})
-    if takeaways.get("best"):
-        lines.append(f"- {takeaways['best']}")
-    if takeaways.get("worst"):
-        lines.append(f"- {takeaways['worst']}")
-    lines.append("")
-
     lines.append("## 核心球员趋势")
     lines.append("")
     for trend in analysis.get("player_trends", []):

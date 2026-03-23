@@ -3,7 +3,6 @@ from __future__ import annotations
 from typing import Any
 
 from .config import CORE_TREND_PRIORITY_NAMES, DEFAULT_ROLE_INFO, PLAYER_CONTEXT, PLAYER_OFFENSIVE_ROLE_MAP, ROLE_PRIORITY
-from .metrics import percent_text
 
 def get_player_role_info(player_name: str) -> dict[str, str]:
     role_info = PLAYER_OFFENSIVE_ROLE_MAP.get(player_name, DEFAULT_ROLE_INFO)
@@ -93,6 +92,8 @@ def classify_offensive_impact(row: dict[str, Any], role_info: dict[str, str]) ->
     return "low-involvement role player"
 
 def describe_role_aware_positive_takeaway(row: dict[str, Any], role_info: dict[str, str]) -> str:
+    from .metrics import percent_text
+
     name = row["player_name"]
     tier = role_info["tier"]
     archetype = role_info["archetype"]
@@ -119,6 +120,8 @@ def describe_role_aware_positive_takeaway(row: dict[str, Any], role_info: dict[s
     return f"{name} 作为轮换角色在有限回合里完成了自己的任务，提供了合格的补充价值。"
 
 def describe_role_aware_negative_takeaway(row: dict[str, Any], role_info: dict[str, str]) -> str:
+    from .metrics import percent_text
+
     name = row["player_name"]
     tier = role_info["tier"]
     archetype = role_info["archetype"]
